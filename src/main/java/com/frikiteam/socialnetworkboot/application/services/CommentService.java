@@ -1,0 +1,54 @@
+package com.frikiteam.socialnetworkboot.application.services;
+
+import com.frikiteam.socialnetworkboot.application.commands.RegisterComment;
+import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterRequest;
+import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterResponse;
+import com.frikiteam.socialnetworkboot.application.dtos.CommentView;
+import com.frikiteam.socialnetworkboot.application.enums.ResultType;
+import com.frikiteam.socialnetworkboot.application.notification.Notification;
+import com.frikiteam.socialnetworkboot.application.notification.Result;
+import com.frikiteam.socialnetworkboot.application.queries.GetCommentByIdQuery;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.messaging.responsetypes.ResponseTypes;
+import org.axonframework.queryhandling.QueryGateway;
+import org.springframework.stereotype.Component;
+
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
+@Component
+public class CommentService {
+  private final CommandGateway commandGateway;
+  private final QueryGateway queryGateway;
+
+  public CommentService(CommandGateway commandGateway, QueryGateway queryGateway) {
+    this.commandGateway = commandGateway;
+    this.queryGateway = queryGateway;
+  }
+
+  public Result<CommentRegisterResponse, Notification> registerComment(CommentRegisterRequest request) throws Exception {
+    String commentId = UUID.randomUUID().toString();
+    RegisterComment registerComment = new RegisterComment(commentId, request.getContent());
+    CompletableFuture<Object> future = commandGateway.send(registerComment);
+    CompletableFuture<ResultType> result = future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
+    ResultType resultType = result.get();
+    if (resultType == ResultType.FAILURE) {
+      throw new Exception("Error while registering comment");
+    }
+    CommentRegisterResponse response = new CommentRegisterResponse(
+      registerComment.getId(),
+      registerComment.getContent()
+    );
+    return Result.success(response);
+  }
+
+  public CommentView getById(String id) throws Exception {
+    CompletableFuture<CommentView> future = queryGateway.query(new GetCommentByIdQuery(id), ResponseTypes.instanceOf(CommentView.class));
+    CompletableFuture<ResultType> result = future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
+    ResultType resultType = result.get();
+    if (resultType == ResultType.FAILURE) {
+      throw new Exception("Error while getting comment");
+    }
+    return future.get();
+  }
+}
