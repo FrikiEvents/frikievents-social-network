@@ -5,11 +5,7 @@ import com.frikiteam.socialnetworkboot.application.commands.RegisterEventQualifi
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterRequest;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterResponse;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationView;
-import com.frikiteam.socialnetworkboot.application.enums.ResultType;
-import com.frikiteam.socialnetworkboot.application.notification.Notification;
-import com.frikiteam.socialnetworkboot.application.notification.Result;
 import com.frikiteam.socialnetworkboot.application.queries.GetEventQualificationByIdQuery;
-import com.frikiteam.socialnetworkboot.domain.entities.EventQualification;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;

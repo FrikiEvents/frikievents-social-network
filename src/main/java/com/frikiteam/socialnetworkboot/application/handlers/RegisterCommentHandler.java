@@ -1,8 +1,6 @@
 package com.frikiteam.socialnetworkboot.application.handlers;
 
 import com.frikiteam.socialnetworkboot.application.commands.RegisterComment;
-import com.frikiteam.socialnetworkboot.application.notification.Notification;
-import com.frikiteam.socialnetworkboot.application.notification.Result;
 import com.frikiteam.socialnetworkboot.application.repositories.CommentRepository;
 import com.frikiteam.socialnetworkboot.domain.entities.Comment;
 import com.frikiteam.socialnetworkboot.domain.values.CommentId;

@@ -3,8 +3,6 @@ package com.frikiteam.socialnetworkboot.api;
 import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterRequest;
 import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterResponse;
 import com.frikiteam.socialnetworkboot.application.dtos.CommentView;
-import com.frikiteam.socialnetworkboot.application.notification.Notification;
-import com.frikiteam.socialnetworkboot.application.notification.Result;
 import com.frikiteam.socialnetworkboot.application.services.CommentService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

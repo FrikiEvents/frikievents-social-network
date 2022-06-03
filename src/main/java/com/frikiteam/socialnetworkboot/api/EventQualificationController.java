@@ -4,8 +4,6 @@ package com.frikiteam.socialnetworkboot.api;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterRequest;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterResponse;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationView;
-import com.frikiteam.socialnetworkboot.application.notification.Notification;
-import com.frikiteam.socialnetworkboot.application.notification.Result;
 import com.frikiteam.socialnetworkboot.application.services.EventQualificationService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
