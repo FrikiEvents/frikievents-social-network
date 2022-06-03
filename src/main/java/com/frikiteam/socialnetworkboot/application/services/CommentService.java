@@ -1,5 +1,8 @@
 package com.frikiteam.socialnetworkboot.application.services;
 
+import com.frikiteam.frikievents.common.application.Notification;
+import com.frikiteam.frikievents.common.application.Result;
+import com.frikiteam.frikievents.common.application.ResultType;
 import com.frikiteam.socialnetworkboot.application.commands.RegisterComment;
 import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterRequest;
 import com.frikiteam.socialnetworkboot.application.dtos.CommentRegisterResponse;

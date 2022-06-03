@@ -1,6 +1,9 @@
 package com.frikiteam.socialnetworkboot.application.services;
 
 
+import com.frikiteam.frikievents.common.application.Notification;
+import com.frikiteam.frikievents.common.application.Result;
+import com.frikiteam.frikievents.common.application.ResultType;
 import com.frikiteam.socialnetworkboot.application.commands.RegisterEventQualification;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterRequest;
 import com.frikiteam.socialnetworkboot.application.dtos.EventQualificationRegisterResponse;
