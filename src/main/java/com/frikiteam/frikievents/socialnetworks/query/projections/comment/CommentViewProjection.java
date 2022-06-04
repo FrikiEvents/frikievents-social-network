@@ -1,6 +1,6 @@
 package com.frikiteam.frikievents.socialnetworks.query.projections.comment;
 
-import com.frikiteam.frikievents.socialnetworks.more.CommentRegistered;
+import com.frikiteam.frikievents.socialnetworks.contracts.events.CommentRegistered;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 

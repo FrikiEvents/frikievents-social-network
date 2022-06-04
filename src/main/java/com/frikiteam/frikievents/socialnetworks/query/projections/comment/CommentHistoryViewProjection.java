@@ -1,6 +1,7 @@
 package com.frikiteam.frikievents.socialnetworks.query.projections.comment;
 
-import com.frikiteam.frikievents.socialnetworks.more.CommentRegistered;
+import com.frikiteam.frikievents.socialnetworks.contracts.events.CommentEdited;
+import com.frikiteam.frikievents.socialnetworks.contracts.events.CommentRegistered;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,7 @@ public class CommentHistoryViewProjection {
     commentHistoryViewRepository.save(commentHistoryView);
   }
 
-  /*@EventHandler
+  @EventHandler
   public void on(CommentEdited event) {
     Optional<CommentHistoryView> commentHistoryViewOptional =
         commentHistoryViewRepository.getLastCommentHistoryByCommentId(event.getCommentId());
@@ -32,7 +33,7 @@ public class CommentHistoryViewProjection {
       commentHistoryView.setContent(event.getContent());
       commentHistoryViewRepository.save(commentHistoryView);
     }
-  }*/
+  }
 }
 
 

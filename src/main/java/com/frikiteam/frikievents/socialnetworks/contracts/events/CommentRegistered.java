@@ -1,4 +1,4 @@
-package com.frikiteam.frikievents.socialnetworks.more;
+package com.frikiteam.frikievents.socialnetworks.contracts.events;
 
 import lombok.Getter;
 import lombok.Setter;

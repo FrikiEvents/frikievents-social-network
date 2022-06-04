@@ -3,12 +3,15 @@ package com.frikiteam.frikievents.socialnetworks.command.api;
 import com.frikiteam.frikievents.common.api.ApiController;
 import com.frikiteam.frikievents.common.application.Notification;
 import com.frikiteam.frikievents.common.application.Result;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.EditCommentRequest;
 import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.RegisterCommentRequest;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.EditCommentResponse;
 import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.RegisterCommentResponse;
 import com.frikiteam.frikievents.socialnetworks.command.application.services.CommentApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +42,7 @@ public class CommentCommandController {
     }
   }
 
-  /*@PutMapping("/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<Object> update(@PathVariable("id") String commentId, @RequestBody EditCommentRequest editCommentRequest) {
     try {
       Result<EditCommentResponse, Notification> result = commentApplicationService.updateComment(commentId, editCommentRequest);
@@ -52,6 +55,6 @@ public class CommentCommandController {
     } catch(Exception e) {
       return ApiController.serverError();
     }
-  }*/
+  }
 
 }

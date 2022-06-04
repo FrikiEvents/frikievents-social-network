@@ -3,10 +3,13 @@ package com.frikiteam.frikievents.socialnetworks.command.application.services;
 import com.frikiteam.frikievents.common.application.Notification;
 import com.frikiteam.frikievents.common.application.Result;
 import com.frikiteam.frikievents.common.application.ResultType;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.EditCommentRequest;
 import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.RegisterCommentRequest;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.EditCommentResponse;
 import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.RegisterCommentResponse;
 import com.frikiteam.frikievents.socialnetworks.command.application.validators.RegisterCommentValidator;
-import com.frikiteam.frikievents.socialnetworks.more.RegisterComment;
+import com.frikiteam.frikievents.socialnetworks.contracts.commands.EditComment;
+import com.frikiteam.frikievents.socialnetworks.contracts.commands.RegisterComment;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Component;
 
@@ -48,7 +51,7 @@ public class CommentApplicationService {
     return Result.success(commentRegisterResponse);
   }
 
-  /*public Result<EditCommentResponse, Notification> updateComment(String commentId, EditCommentRequest editCommentRequest) throws Exception {
+  public Result<EditCommentResponse, Notification> updateComment(String commentId, EditCommentRequest editCommentRequest) throws Exception {
     EditComment editComment = new EditComment(
         commentId,
         editCommentRequest.getContent()
@@ -64,6 +67,6 @@ public class CommentApplicationService {
         editComment.getContent()
     );
     return Result.success(editCommentResponse);
-  }*/
+  }
 
 }
