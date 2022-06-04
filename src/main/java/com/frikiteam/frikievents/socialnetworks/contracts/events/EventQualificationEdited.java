@@ -12,7 +12,7 @@ public class EventQualificationEdited {
     private Integer starsQuantity;
     private Instant occurredOn;
 
-    public EventQualificationEdited() {
+    public EventQualificationEdited(String eventQualificationId, Integer starsQuantity) {
     }
 
 

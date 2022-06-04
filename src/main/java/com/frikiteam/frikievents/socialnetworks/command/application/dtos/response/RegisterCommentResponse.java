@@ -10,7 +10,7 @@ public class RegisterCommentResponse {
   private String commentId;
   private String content;
 
-  public RegisterCommentResponse() {
+  public RegisterCommentResponse(String eventQualificationId, Integer starsQuantity) {
   }
 
   public RegisterCommentResponse(String commentId, String content) {
