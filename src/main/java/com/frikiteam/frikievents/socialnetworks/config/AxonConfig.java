@@ -1,6 +1,6 @@
 package com.frikiteam.frikievents.socialnetworks.config;
 
-import com.frikiteam.frikievents.socialnetworks.domain.entities.Comment;
+import com.frikiteam.frikievents.socialnetworks.command.domain.Comment;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.modelling.command.Repository;
