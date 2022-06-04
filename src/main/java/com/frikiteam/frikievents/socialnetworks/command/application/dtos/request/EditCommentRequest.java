@@ -6,12 +6,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EditCommentRequest {
+
+    private String commentId;
     private String content;
 
-  public EditCommentRequest(String content) {
-    this.content = content;
+  public EditCommentRequest() {
   }
 
-  public EditCommentRequest() {
+  public EditCommentRequest(String commentId, String content) {
+    this.commentId = commentId;
+    this.content = content;
   }
 }

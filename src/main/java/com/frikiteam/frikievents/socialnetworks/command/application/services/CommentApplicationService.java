@@ -51,9 +51,9 @@ public class CommentApplicationService {
     return Result.success(commentRegisterResponse);
   }
 
-  public Result<EditCommentResponse, Notification> updateComment(String commentId, EditCommentRequest editCommentRequest) throws Exception {
+  public Result<EditCommentResponse, Notification> updateComment(EditCommentRequest editCommentRequest) throws Exception {
     EditComment editComment = new EditComment(
-        commentId,
+        editCommentRequest.getCommentId(),
         editCommentRequest.getContent()
     );
     CompletableFuture<Object> future = commandGateway.send(editComment);

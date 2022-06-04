@@ -42,10 +42,11 @@ public class CommentCommandController {
     }
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<Object> update(@PathVariable("id") String commentId, @RequestBody EditCommentRequest editCommentRequest) {
+  @PutMapping("")
+  @Operation(summary = "Edit a comment")
+  public ResponseEntity<Object> update(@RequestBody EditCommentRequest editCommentRequest) {
     try {
-      Result<EditCommentResponse, Notification> result = commentApplicationService.updateComment(commentId, editCommentRequest);
+      Result<EditCommentResponse, Notification> result = commentApplicationService.updateComment(editCommentRequest);
       if (result.isSuccess()) {
         return ApiController.ok(result.getSuccess());
       }
