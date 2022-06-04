@@ -1,4 +1,4 @@
-package com.frikiteam.frikievents.socialnetworks.query.projections;
+package com.frikiteam.frikievents.socialnetworks.query.projections.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

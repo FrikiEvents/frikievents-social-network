@@ -5,7 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentEditRequest {
-  private String commentId;
+public class RegisterCommentRequest {
   private String content;
+
+  public RegisterCommentRequest() {
+  }
+
+  public RegisterCommentRequest(String content) {
+    this.content = content;
+  }
 }

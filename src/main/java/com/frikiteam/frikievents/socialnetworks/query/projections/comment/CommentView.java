@@ -1,4 +1,4 @@
-package com.frikiteam.frikievents.socialnetworks.query.projections;
+package com.frikiteam.frikievents.socialnetworks.query.projections.comment;
 
 import lombok.Getter;
 import lombok.Setter;

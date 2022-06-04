@@ -1,10 +1,7 @@
 package com.frikiteam.frikievents.socialnetworks.command.domain;
 
-import com.frikiteam.socialnetworkcontracts.socialNetwork.contracts.commands.EditComment;
-import com.frikiteam.socialnetworkcontracts.socialNetwork.contracts.commands.RegisterComment;
-import com.frikiteam.socialnetworkcontracts.socialNetwork.contracts.events.CommentEdited;
-import com.frikiteam.socialnetworkcontracts.socialNetwork.contracts.events.CommentRegistered;
-
+import com.frikiteam.frikievents.socialnetworks.more.CommentRegistered;
+import com.frikiteam.frikievents.socialnetworks.more.RegisterComment;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -33,15 +30,15 @@ public class Comment {
     );
   }
 
-  @CommandHandler
-  public void handle(EditComment command) {
+  /*@CommandHandler
+  public Comment(EditComment command) {
     apply(
         new CommentEdited(
             command.getCommentId(),
             command.getContent()
         )
     );
-  }
+  }*/
 
   @EventSourcingHandler
   protected void on(CommentRegistered event) {
@@ -49,8 +46,8 @@ public class Comment {
     this.content = event.getContent();
   }
 
-  @EventSourcingHandler
+  /*@EventSourcingHandler
   protected void on(CommentEdited event) {
     this.content = event.getContent();
-  }
+  }*/
 }

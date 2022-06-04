@@ -3,10 +3,8 @@ package com.frikiteam.frikievents.socialnetworks.command.api;
 import com.frikiteam.frikievents.common.api.ApiController;
 import com.frikiteam.frikievents.common.application.Notification;
 import com.frikiteam.frikievents.common.application.Result;
-import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.CommentEditRequest;
-import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.CommentRegisterRequest;
-import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.CommentEditResponse;
-import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.CommentRegisterResponse;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.request.RegisterCommentRequest;
+import com.frikiteam.frikievents.socialnetworks.command.application.dtos.response.RegisterCommentResponse;
 import com.frikiteam.frikievents.socialnetworks.command.application.services.CommentApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,38 +25,33 @@ public class CommentCommandController {
     this.commandGateway = commandGateway;
   }
 
-  @GetMapping("")
-  public String getAll() {
-    return "dsadasda";
-  }
-
-  @PostMapping(path = "")
+  @PostMapping(path= "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @Operation(summary = "Register a new comment")
-  public ResponseEntity<Object> register(@RequestBody CommentRegisterRequest commentRegisterRequest) {
+  public ResponseEntity<Object> register(@RequestBody RegisterCommentRequest registerCommentRequest) {
     try {
-      Result<CommentRegisterResponse, Notification> result = commentApplicationService.registerComment(commentRegisterRequest);
-      System.out.println("result: " + result);
+      Result<RegisterCommentResponse, Notification> result = commentApplicationService.registerComment(registerCommentRequest);
       if (result.isSuccess()) {
         return ApiController.created(result.getSuccess());
       }
       return ApiController.error(result.getFailure().getErrors());
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
+    } catch(Exception e) {
       return ApiController.serverError();
     }
   }
 
-  @PutMapping(path = "/{id}" , consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Object> update(@PathVariable String id, @RequestBody CommentEditRequest commentEditRequest) {
+  /*@PutMapping("/{id}")
+  public ResponseEntity<Object> update(@PathVariable("id") String commentId, @RequestBody EditCommentRequest editCommentRequest) {
     try {
-      Result<CommentEditResponse, Notification> result = commentApplicationService.updateComment(id, commentEditRequest);
+      Result<EditCommentResponse, Notification> result = commentApplicationService.updateComment(commentId, editCommentRequest);
       if (result.isSuccess()) {
         return ApiController.ok(result.getSuccess());
       }
       return ApiController.error(result.getFailure().getErrors());
-    } catch (Exception e) {
+    } catch (AggregateNotFoundException exception) {
+      return ApiController.notFound();
+    } catch(Exception e) {
       return ApiController.serverError();
     }
-  }
+  }*/
 
 }
