@@ -1,5 +1,6 @@
 package com.frikiteam.frikievents.socialnetworks.query.projections.comment;
 
+import com.frikiteam.frikievents.socialnetworks.command.domain.valueObjects.CommentId;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,14 +15,14 @@ public class CommentHistoryView {
   @Id @GeneratedValue
   private Long commentHistoryId;
 
-  private String commentId;
+  private CommentId commentId;
 
   private String content;
 
   public CommentHistoryView() {
   }
 
-  public CommentHistoryView(String commentId, String content) {
+  public CommentHistoryView(CommentId commentId, String content) {
     this.commentId = commentId;
     this.content = content;
   }
