@@ -40,10 +40,11 @@ public class CommentQueryController {
 
   @GetMapping("/{id}")
   @Operation(summary = "Get comment by id")
-  public ResponseEntity<CommentView> getCommentById(@PathVariable("id") String id) {
+  public ResponseEntity<List<CommentView>> getCommentById(@PathVariable() String id) {
     try {
-      CommentView commentView = commentViewRepository.findById(id).get();
-      return new ResponseEntity(commentView, HttpStatus.OK);
+      List<CommentView> commentViews = commentViewRepository.getCommentByCommentId(id);
+
+      return new ResponseEntity(commentViews, HttpStatus.OK);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
