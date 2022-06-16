@@ -12,8 +12,7 @@ public class EventQualificationRegistered {
     private Integer starsQuantity;
     private Instant occurredOn;
 
-    public EventQualificationRegistered(String eventQualificationId, Integer starsQuantity) {
-    }
+
 
 
     public EventQualificationRegistered(String eventQualificationId, Integer starsQuantity, Instant occurredOn) {

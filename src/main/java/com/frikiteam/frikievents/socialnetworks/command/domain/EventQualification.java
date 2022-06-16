@@ -10,6 +10,8 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 
+import java.time.Instant;
+
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
 @Aggregate
@@ -18,17 +20,20 @@ public class EventQualification {
     private String eventQualificationId;
 
     private Integer starsQuantity;
-
+    private Instant occurredOn;
 
     public EventQualification() {
     }
 
     @CommandHandler
     public EventQualification(RegisterEventQualification command) {
+
         apply(
             new EventQualificationRegistered(
                     command.getEventQualificationId(),
-                    command.getStarsQuantity()
+                    command.getStarsQuantity(),
+                    command.getOccurredOn()
+
             )
         );
     }
@@ -37,7 +42,7 @@ public class EventQualification {
     public EventQualification(EditEventQualification command) {
         apply(
                 new EventQualificationEdited(
-                        command.getEventQualificationId(),
+
                         command.getStarsQuantity()
                 )
         );

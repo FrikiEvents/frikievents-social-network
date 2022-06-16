@@ -7,14 +7,13 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Getter
 @Setter
 public class EditEventQualification {
-    @TargetAggregateIdentifier
-    private String eventQualificationId;
+
     private Integer starsQuantity;
 
-    public EditEventQualification() { }
 
-    public EditEventQualification(String eventQualificationId, int starsQuantity) {
-        this.eventQualificationId = eventQualificationId;
+
+    public EditEventQualification( int starsQuantity) {
+
         this.starsQuantity = starsQuantity;
     }
 }

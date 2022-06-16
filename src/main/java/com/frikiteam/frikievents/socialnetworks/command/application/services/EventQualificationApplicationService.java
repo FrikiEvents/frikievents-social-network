@@ -41,7 +41,8 @@ public class EventQualificationApplicationService {
         String eventQualificationId = UUID.randomUUID().toString();
         RegisterEventQualification registerEventQualification = new RegisterEventQualification(
                 eventQualificationId,
-                eventQualificationRegisterRequest.getStarsQuantity()
+                eventQualificationRegisterRequest.getStarsQuantity(),
+                eventQualificationRegisterRequest.getOccurredOn()
         );
         CompletableFuture<Object> future = commandGateway.send(registerEventQualification);
         CompletableFuture<ResultType> result = future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
@@ -58,8 +59,7 @@ public class EventQualificationApplicationService {
 
     public Result<EditEventQualificationResponse, Notification> updateEventQualification(EditEventQualificationRequest editEventQualificationRequest) throws Exception {
         EditEventQualification editEventQualification = new EditEventQualification(
-                editEventQualificationRequest.getEventQualificationId(),
-                editEventQualificationRequest.getStarsQuantity()
+               editEventQualificationRequest.getStarsQuantity()
         );
         CompletableFuture<Object> future = commandGateway.send(editEventQualification);
         CompletableFuture<ResultType> result = future.handle((ok, ex) -> (ex != null) ? ResultType.FAILURE : ResultType.SUCCESS);
@@ -68,7 +68,7 @@ public class EventQualificationApplicationService {
             throw new Exception("Error while updating Event Qualification");
         }
         EditEventQualificationResponse editEventQualificationResponse = new EditEventQualificationResponse(
-                editEventQualification.getEventQualificationId(),
+
                 editEventQualification.getStarsQuantity()
         );
         return Result.success(editEventQualificationResponse);

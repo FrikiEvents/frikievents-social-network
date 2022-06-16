@@ -17,16 +17,13 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/event_qualifications")
-@Tag(name = "Event Qualification")
+@Tag(name = "EventsQualification")
 public class EventQualificationCommandController {
     private final CommandGateway commandGateway;
     private final EventQualificationApplicationService eventQualificationApplicationService;
@@ -50,8 +47,11 @@ public class EventQualificationCommandController {
         }
     }
 
-    public ResponseEntity<Object> update(@RequestBody EditEventQualificationRequest editEventQualificationRequest) {
+    @PutMapping(path = "/{eventQualificationId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Update a new Event Qualification")
+    public ResponseEntity<Object> update(@PathVariable("eventQualificationId") String eventQualificationId,@RequestBody EditEventQualificationRequest editEventQualificationRequest) {
         try {
+            editEventQualificationRequest.setEventQualificationId(eventQualificationId);
             Result<EditEventQualificationResponse, Notification> result = eventQualificationApplicationService.updateEventQualification(editEventQualificationRequest);
             if (result.isSuccess()) {
                 return ApiController.ok(result.getSuccess());

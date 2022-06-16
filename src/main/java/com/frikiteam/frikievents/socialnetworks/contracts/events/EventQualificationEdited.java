@@ -12,13 +12,12 @@ public class EventQualificationEdited {
     private Integer starsQuantity;
     private Instant occurredOn;
 
-    public EventQualificationEdited(String eventQualificationId, Integer starsQuantity) {
-    }
 
 
-    public EventQualificationEdited(String eventQualificationId, Integer starsQuantity, Instant occurredOn) {
-        this.eventQualificationId = eventQualificationId;
+
+    public EventQualificationEdited( Integer starsQuantity) {
+
         this.starsQuantity = starsQuantity;
-        this.occurredOn = occurredOn;
+
     }
 }

@@ -11,11 +11,10 @@ public class EditEventQualificationRequest {
     private Integer starsQuantity;
 
 
-    public EditEventQualificationRequest() {
-    }
 
-    public EditEventQualificationRequest(String eventQualificationId, Integer starsQuantity) {
-        this.eventQualificationId = eventQualificationId;
+
+    public EditEventQualificationRequest( Integer starsQuantity) {
+
         this.starsQuantity = starsQuantity;
     }
 }
