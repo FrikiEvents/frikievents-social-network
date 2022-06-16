@@ -38,11 +38,11 @@ public class CommentQueryController {
     }
   }
 
-  @GetMapping("/{id}")
-  @Operation(summary = "Get comment by id")
-  public ResponseEntity<List<CommentView>> getCommentById(@PathVariable() String id) {
+  @GetMapping("/{content}")
+  @Operation(summary = "Get comment by content")
+  public ResponseEntity<List<CommentView>> getCommentById(@PathVariable() String content) {
     try {
-      List<CommentView> commentViews = commentViewRepository.getCommentByCommentId(id);
+      List<CommentView> commentViews = commentViewRepository.getCommentByCommentId(content);
 
       return new ResponseEntity(commentViews, HttpStatus.OK);
     } catch (Exception e) {

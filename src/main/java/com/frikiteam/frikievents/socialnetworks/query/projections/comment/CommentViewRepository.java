@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface CommentViewRepository extends JpaRepository<CommentView, String> {
 
-    @Query(value = "SELECT * FROM comment_view WHERE id = :commentId", nativeQuery = true)
-    List<CommentView> getCommentByCommentId(String commentId);
+    @Query(value = "SELECT * FROM comment_view WHERE content = :contentId", nativeQuery = true)
+    List<CommentView> getCommentByCommentId(String contentId);
 }
