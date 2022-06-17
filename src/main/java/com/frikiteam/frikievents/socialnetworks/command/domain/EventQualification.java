@@ -59,4 +59,27 @@ public class EventQualification {
         this.starsQuantity = event.getStarsQuantity();
     }
 
+    public String getEventQualificationId() {
+        return eventQualificationId;
+    }
+
+    public void setEventQualificationId(String eventQualificationId) {
+        this.eventQualificationId = eventQualificationId;
+    }
+
+    public Integer getStarsQuantity() {
+        return starsQuantity;
+    }
+
+    public void setStarsQuantity(Integer starsQuantity) {
+        this.starsQuantity = starsQuantity;
+    }
+
+    public Instant getOccurredOn() {
+        return occurredOn;
+    }
+
+    public void setOccurredOn(Instant occurredOn) {
+        this.occurredOn = occurredOn;
+    }
 }
