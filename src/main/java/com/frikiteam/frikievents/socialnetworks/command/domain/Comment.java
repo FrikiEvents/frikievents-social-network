@@ -57,4 +57,20 @@ public class Comment {
   protected void on(CommentEdited event) {
     this.content = event.getContent();
   }
+
+  public String getCommentId() {
+    return commentId;
+  }
+
+  public void setCommentId(String commentId) {
+    this.commentId = commentId;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
 }
