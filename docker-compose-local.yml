@@ -1,0 +1,8 @@
+services:
+  frikievents-users-l-deploy:
+    image: frikievents-social-deploy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
